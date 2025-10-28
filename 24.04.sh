@@ -193,6 +193,7 @@ if [[ -v slack ]]; then
 fi
 
 gsettings set org.gnome.desktop.app-folders folder-children "[]"
+dconf reset -f /org/gnome/desktop/app-folders/
 
 
 
