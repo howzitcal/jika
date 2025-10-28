@@ -181,7 +181,7 @@ rm -rf $HOME/.themes/marble.zip
 
 gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 dconf write /org/gnome/shell/extensions/user-theme/name "'Marble-blue-dark'"
 dconf write /org/gnome/desktop/interface/cursor-theme "'breeze_cursors'"
 
