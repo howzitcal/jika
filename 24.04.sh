@@ -17,7 +17,14 @@ done
 sudo apt update
 sudo apt upgrade -yq
 
+# remove un-used extensions
+gnome-extensions disable ding@rastersoft.com
+gnome-extensions disable ubuntu-dock@ubuntu.com
 gnome-extensions disable tiling-assistant@ubuntu.com
+gnome-extensions disable tiling-assistant@ubuntu.com
+
+# apt removes
+sudo apt remove -yq gnome-shell-extension-desktop-icons-ng gnome-shell-extension-ubuntu-dock gnome-shell-extension-ubuntu-tiling-assistant yelp
 
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/login-shell true
 
@@ -91,47 +98,15 @@ gsettings set org.gnome.desktop.interface clock-show-seconds true
 # remove all shell favorite icons
 dconf write /org/gnome/shell/favorite-apps "['']"
 
-# remove un-used extensions
-gnome-extensions disable ding@rastersoft.com
-gnome-extensions disable ubuntu-dock@ubuntu.com
-gnome-extensions disable tiling-assistant@ubuntu.com
-
 #just perfection extension
 dconf write /org/gnome/shell/extensions/just-perfection/animation 4
 dconf write /org/gnome/shell/extensions/just-perfection/notification-banner-position 5
-
-# apt removes
-sudo apt remove -yq gnome-shell-extension-desktop-icons-ng gnome-shell-extension-ubuntu-dock gnome-shell-extension-ubuntu-tiling-assistant yelp
 
 # remove un-used snaps
 sudo snap remove --no-wait snap-store firefox
 
 sudo apt install -yq papirus-icon-theme gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-
-if [[ -v dark_theme ]]; then
-    echo "[INFO] Setting up dark theme..."
-
-    gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-    # gsettings set org.gnome.desktop.interface accent-color 'blue'
-
-    sudo snap refresh --no-wait
-
-    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors false
-    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/foreground-color "'rgb(211,215,207)'"
-    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-color "'rgb(46,52,54)'"
-    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/palette "['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
-    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-transparency false
-    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background true
-    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent 5
-
-    mkdir -p $HOME/Pictures/Wallpapers
-    wget https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/assets/wallpapers/simple-waves.png -O $HOME/Pictures/Wallpapers/simple-waves.png
-    gsettings set org.gnome.desktop.background picture-uri-dark file://$HOME/Pictures/Wallpapers/simple-waves.png
-fi
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrep
 
 if [[ -v dev ]]; then
     echo "[INFO] installing dev tools"
@@ -140,7 +115,7 @@ if [[ -v dev ]]; then
     sudo apt install -yq $DOWNLOAD_PATH/dbeaver.deb
 
     wget -c https://go.microsoft.com/fwlink/?LinkID=760868 -O $DOWNLOAD_PATH/code.deb
-    sudo apt install -yq $DOWNLOAD_PATH/code.deb
+    sudo apt install -yqf $DOWNLOAD_PATH/code.deb
 
     for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
     sudo apt-get update
@@ -175,6 +150,32 @@ fi
 
 if [[ -v git_email ]]; then
     git config --global user.email "$git_email"
+fi
+
+if [[ -v dark_theme ]]; then
+    echo "[INFO] Setting up dark theme..."
+
+    gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+    # gsettings set org.gnome.desktop.interface accent-color 'blue'
+
+    sudo snap refresh --no-wait
+
+    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors false
+    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/foreground-color "'rgb(211,215,207)'"
+    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-color "'rgb(46,52,54)'"
+    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/palette "['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
+    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-transparency false
+    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background true
+    dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent 5
+
+    mkdir -p $HOME/Pictures/Wallpapers
+    wget https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/assets/wallpapers/simple-waves.png -O $HOME/Pictures/Wallpapers/simple-waves.png
+    gsettings set org.gnome.desktop.background picture-uri-dark file://$HOME/Pictures/Wallpapers/simple-waves.png
+
+    sudo flatpak install  --noninteractive -y org.gtk.Gtk3theme.Adwaita-dark
+    sudo flatpak override --env=GTK_THEME=Adwaita-dark
 fi
 
 
