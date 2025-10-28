@@ -71,6 +71,7 @@ dconf write /org/gnome/shell/extensions/mediacontrols/show-control-icons-seek-fo
 # extension customization: vitals
 dconf write /org/gnome/shell/extensions/vitals/hot-sensors "['_processor_usage_', '_memory_usage_', '__network-tx_max__', '__network-rx_max__']"
 dconf write /org/gnome/shell/extensions/vitals/use-higher-precision true
+sconf write /org/gnome/shell/extensions/vitals/menu-centered true
 
 # extension customization: caffine customizations
 dconf write /org/gnome/shell/extensions/caffeine/show-indicator "'always'"
@@ -111,19 +112,17 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 if [[ -v dev ]]; then
     echo "[INFO] installing dev tools"
 
+    # dbeaver
     wget -c https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb -O $DOWNLOAD_PATH/dbeaver.deb
     sudo apt install -yq $DOWNLOAD_PATH/dbeaver.deb
 
-    wget -c https://go.microsoft.com/fwlink/?LinkID=760868 -O $DOWNLOAD_PATH/code.deb
-    sudo apt install -yqf $DOWNLOAD_PATH/code.deb
-
+    # docker
     for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
     sudo apt-get update
     sudo apt-get install -yq ca-certificates curl
     sudo install -m 0755 -d /etc/apt/keyrings
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
     sudo chmod a+r /etc/apt/keyrings/docker.asc
-
     echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
     $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
@@ -132,7 +131,23 @@ if [[ -v dev ]]; then
     sudo apt-get -yq install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     sudo usermod -aG docker $USER
 
-
+    # code
+    echo "code code/add-microsoft-repo boolean true" | sudo debconf-set-selections
+    sudo apt-get install wget gpg
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg
+    rm -f microsoft.gpg
+sudo tee /etc/apt/sources.list.d/vscode.sources > /dev/null <<'EOF'
+Types: deb
+URIs: https://packages.microsoft.com/repos/code
+Suites: stable
+Components: main
+Architectures: amd64,arm64,armhf
+Signed-By: /usr/share/keyrings/microsoft.gpg
+EOF
+    sudo apt-get install -yq apt-transport-https
+    sudo apt update
+    sudo apt-get install -yq code
 fi
 
 if [[ -v chrome ]]; then
