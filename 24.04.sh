@@ -107,7 +107,7 @@ dconf write /org/gnome/shell/extensions/just-perfection/notification-banner-posi
 sudo snap remove --no-wait snap-store firefox
 
 sudo apt install -yq papirus-icon-theme gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrep
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 if [[ -v dev ]]; then
     echo "[INFO] installing dev tools"
