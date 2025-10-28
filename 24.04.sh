@@ -193,6 +193,10 @@ if [[ -v dark_theme ]]; then
     sudo flatpak override --env=GTK_THEME=Adwaita-dark
 fi
 
+if [[ -v slack ]]; then
+    flatpak install flathub com.slack.Slack
+fi
+
 
 sudo apt autoremove -yq
 rm -rf $DOWNLOAD_PATH
