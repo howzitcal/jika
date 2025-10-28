@@ -32,46 +32,36 @@ gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "Always-Show-Titles-In-Overview@gmail.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "batterytimepercentagecompact@sagrland.de"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "caffeine@patapon.info"
-gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "dash-to-panel@jderose9.github.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "mediacontrols@cliffniff.github.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "mute-unmute@mcast.gnomext.com"
-gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "Vitals@CoreCoding.com"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "just-perfection-desktop@just-perfection"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "tiling-assistant@leleat-on-github"
+gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "tophat@fflewddur.github.io"
+gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "user-theme@gnome-shell-extensions.gcampax.github.com"
+gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "dash-to-dock@micxgx.gmail.com"
 
-sleep 20
+sleep 15
 
-# extension customization: panel
-dconf write /org/gnome/shell/extensions/dash-to-panel/panel-element-positions "'{\"0\":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}],"GSM-506TFSS0L142":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'"
-dconf write /org/gnome/shell/extensions/dash-to-panel/trans-panel-opacity 0.80000000000000004
-dconf write /org/gnome/shell/extensions/dash-to-panel/trans-use-dynamic-opacity true
-dconf write /org/gnome/shell/extensions/dash-to-panel/trans-dynamic-anim-target 1.0
-dconf write /org/gnome/shell/extensions/dash-to-panel/appicon-padding 6
-dconf write /org/gnome/shell/extensions/dash-to-panel/global-border-radius 0
-dconf write /org/gnome/shell/extensions/dash-to-panel/appicon-margin 2
-dconf write /org/gnome/shell/extensions/dash-to-panel/dot-style-unfocused "'SQUARES'"
-dconf write /org/gnome/shell/extensions/dash-to-panel/dot-style-focused "'SQUARES'"
-dconf write /org/gnome/shell/extensions/dash-to-panel/scroll-icon-action "'NOTHING'"
-dconf write /org/gnome/shell/extensions/dash-to-panel/click-action "'TOGGLE-SHOWPREVIEW'"
-dconf write /org/gnome/shell/extensions/dash-to-panel/scroll-panel-action "'SWITCH_WORKSPACE'"
-dconf write /org/gnome/shell/extensions/dash-to-panel/overview-click-to-exit true
-dconf write /org/gnome/shell/extensions/dash-to-panel/focus-highlight-dominant true
+#dash to dock
+dconf write /org/gnome/shell/extensions/dash-to-dock/multi-monitor true
+dconf write /org/gnome/shell/extensions/dash-to-dock/click-action "'focus-or-previews'"
+dconf write /org/gnome/shell/extensions/dash-to-dock/scroll-action "'switch-workspace'"
+dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink true
+dconf write /org/gnome/shell/extensions/dash-to-dock/disable-overview-on-startup true
+dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 1.0
+dconf write /org/gnome/shell/extensions/dash-to-dock/transparency-mode "'FIXED'"
+dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
 
 # extension customization: app indicator customizations
-dconf write /org/gnome/shell/extensions/appindicator/icon-size 22
-dconf write /org/gnome/shell/extensions/appindicator/tray-pos "'center'"
+dconf write /org/gnome/shell/extensions/appindicator/icon-size 19
+dconf write /org/gnome/shell/extensions/appindicator/tray-pos "'right'"
 
 # extension customization: media controls
 dconf write /org/gnome/shell/extensions/mediacontrols/extension-index 'uint32 0'
 dconf write /org/gnome/shell/extensions/mediacontrols/show-player-icon false
 dconf write /org/gnome/shell/extensions/mediacontrols/show-control-icons-seek-backward false
 dconf write /org/gnome/shell/extensions/mediacontrols/show-control-icons-seek-forward false
-dconf write /org/gnome/shell/extensions/mediacontrols/extension-position "'Right'"
-
-# extension customization: vitals
-dconf write /org/gnome/shell/extensions/vitals/hot-sensors "['_processor_usage_', '_memory_usage_', '__network-tx_max__', '__network-rx_max__']"
-dconf write /org/gnome/shell/extensions/vitals/use-higher-precision true
-sconf write /org/gnome/shell/extensions/vitals/menu-centered true
+dconf write /org/gnome/shell/extensions/mediacontrols/extension-position "'Center'"
 
 # extension customization: caffine customizations
 dconf write /org/gnome/shell/extensions/caffeine/show-indicator "'always'"
@@ -99,12 +89,23 @@ dconf write /org/gnome/shell/favorite-apps "['']"
 
 #just perfection extension
 dconf write /org/gnome/shell/extensions/just-perfection/animation 4
-dconf write /org/gnome/shell/extensions/just-perfection/notification-banner-position 5
+dconf write /org/gnome/shell/extensions/just-perfection/notification-banner-position 2
+dconf write /org/gnome/shell/extensions/just-perfection/clock-menu-position 1
+dconf write /org/gnome/shell/extensions/just-perfection/clock-menu-position-offset 20
+dconf write /org/gnome/shell/extensions/just-perfection/startup-status 0
+
+# tophat
+dconf write /org/gnome/shell/extensions/tophat/show-disk false
+dconf write /org/gnome/shell/extensions/tophat/cpu-display "'both'"
+dconf write /org/gnome/shell/extensions/tophat/cpu-sort-cores false
+dconf write /org/gnome/shell/extensions/tophat/mem-display "'both'"
+dconf write /org/gnome/shell/extensions/tophat/position-in-panel "'left'"
+
 
 # remove un-used snaps
 sudo snap remove --no-wait snap-store firefox
 
-sudo apt-get install -yq papirus-icon-theme gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager vlc tilix
+sudo apt-get install -yq papirus-icon-theme gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager vlc tilix unzip breeze-cursor-theme
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 dconf write /com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d/background-transparency-percent 4
@@ -170,29 +171,36 @@ if [[ -v git_email ]]; then
     git config --global user.email "$git_email"
 fi
 
-if [[ -v dark_theme ]]; then
-    echo "[INFO] Setting up dark theme..."
+echo "[INFO] Setting up theme..."
 
-    gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-    # gsettings set org.gnome.desktop.interface accent-color 'blue'
 
-    sudo snap refresh --no-wait
+mkdir $HOME/.themes
+wget https://github.com/imarkoff/Marble-shell-theme/releases/latest/download/Marble-shell-filled.zip -O $HOME/.themes/marble.zip
+unzip $HOME/.themes/marble.zip
+rm -rf $HOME/.themes/marble.zip
 
-    mkdir -p $HOME/Pictures/Wallpapers
-    wget https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/assets/wallpapers/simple-waves.png -O $HOME/Pictures/Wallpapers/simple-waves.png
-    gsettings set org.gnome.desktop.background picture-uri-dark file://$HOME/Pictures/Wallpapers/simple-waves.png
+gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
+dconf write /org/gnome/shell/extensions/user-theme/name "'Marble-blue-dark'"
+dconf write /org/gnome/desktop/interface/cursor-theme "'breeze_cursors'"
 
-    sudo flatpak install  --noninteractive -y org.gtk.Gtk3theme.Adwaita-dark
-    sudo flatpak override --env=GTK_THEME=Adwaita-dark
-fi
+# gsettings set org.gnome.desktop.interface accent-color 'blue'
+
+sudo snap refresh --no-wait
+
+mkdir -p $HOME/Pictures/Wallpapers
+wget https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/assets/wallpapers/simple-waves.png -O $HOME/Pictures/Wallpapers/simple-waves.png
+gsettings set org.gnome.desktop.background picture-uri-dark file://$HOME/Pictures/Wallpapers/simple-waves.png
+
+sudo flatpak install  --noninteractive -y org.gtk.Gtk3theme.Adwaita-dark
+sudo flatpak override --env=GTK_THEME=Adwaita-dark
 
 if [[ -v slack ]]; then
     flatpak install --noninteractive -y flathub com.slack.Slack
 fi
 
-gsettings set org.gnome.desktop.app-folders folder-children "[]"
+gsettings set org.gnome.desktop.app-folders folder-children "['']"
 dconf reset -f /org/gnome/desktop/app-folders/
 
 
