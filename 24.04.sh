@@ -194,7 +194,7 @@ if [[ -v dark_theme ]]; then
 fi
 
 if [[ -v slack ]]; then
-    flatpak install flathub com.slack.Slack
+    flatpak install --noninteractive -y flathub com.slack.Slack
 fi
 
 
