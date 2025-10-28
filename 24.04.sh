@@ -39,12 +39,10 @@ gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "just-perfection-desktop@just-perfection"
 gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.InstallRemoteExtension "tiling-assistant@leleat-on-github"
 
-echo "Extensions installed. Press any key to continue..."
-read -n 1 -s -r
-echo "Continuing..."
+sleep 20
 
 # extension customization: panel
-dconf write /org/gnome/shell/extensions/dash-to-panel/panel-element-positions "'{\"0\":[{\"element\":\"showAppsButton\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"activitiesButton\",\"visible\":false,\"position\":\"stackedTL\"},{\"element\":\"leftBox\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"taskbar\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"centerBox\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"rightBox\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"systemMenu\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"dateMenu\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"desktopButton\",\"visible\":true,\"position\":\"stackedBR\"}],\"BOE-0x00000000\":[{\"element\":\"showAppsButton\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"activitiesButton\",\"visible\":false,\"position\":\"stackedTL\"},{\"element\":\"leftBox\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"taskbar\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"centerBox\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"rightBox\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"systemMenu\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"dateMenu\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"desktopButton\",\"visible\":true,\"position\":\"stackedBR\"}]}'"
+dconf write /org/gnome/shell/extensions/dash-to-panel/panel-element-positions "'{\"0\":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}],"GSM-506TFSS0L142":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'"
 dconf write /org/gnome/shell/extensions/dash-to-panel/trans-panel-opacity 0.80000000000000004
 dconf write /org/gnome/shell/extensions/dash-to-panel/trans-use-dynamic-opacity true
 dconf write /org/gnome/shell/extensions/dash-to-panel/trans-dynamic-anim-target 1.0
@@ -61,12 +59,14 @@ dconf write /org/gnome/shell/extensions/dash-to-panel/focus-highlight-dominant t
 
 # extension customization: app indicator customizations
 dconf write /org/gnome/shell/extensions/appindicator/icon-size 22
+dconf write /org/gnome/shell/extensions/appindicator/tray-pos "'center'"
 
 # extension customization: media controls
 dconf write /org/gnome/shell/extensions/mediacontrols/extension-index 'uint32 0'
 dconf write /org/gnome/shell/extensions/mediacontrols/show-player-icon false
 dconf write /org/gnome/shell/extensions/mediacontrols/show-control-icons-seek-backward false
 dconf write /org/gnome/shell/extensions/mediacontrols/show-control-icons-seek-forward false
+dconf write /org/gnome/shell/extensions/mediacontrols/extension-position "'Right'"
 
 # extension customization: vitals
 dconf write /org/gnome/shell/extensions/vitals/hot-sensors "['_processor_usage_', '_memory_usage_', '__network-tx_max__', '__network-rx_max__']"
@@ -79,9 +79,7 @@ dconf write /org/gnome/shell/extensions/caffeine/enable-mpris true
 
 # adjust ubuntu tiling
 dconf write /org/gnome/shell/extensions/tiling-assistant/enable-tiling-popup false
-
-# remove all folder in menu
-gsettings set org.gnome.desktop.app-folders folder-children "[]"
+dconf write /org/gnome/shell/extensions/tiling-assistant/active-window-hint 0
 
 # install jetbrains font
 wget https://github.com/howzitcal/jika/raw/refs/heads/main/assets/jetbrains-fonts.tar -O $DOWNLOAD_PATH/jetbrains-fonts.tar
@@ -106,7 +104,7 @@ dconf write /org/gnome/shell/extensions/just-perfection/notification-banner-posi
 # remove un-used snaps
 sudo snap remove --no-wait snap-store firefox
 
-sudo apt install -yq papirus-icon-theme gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager
+sudo apt-get install -yq papirus-icon-theme gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager vlc
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 if [[ -v dev ]]; then
@@ -196,6 +194,9 @@ fi
 if [[ -v slack ]]; then
     flatpak install --noninteractive -y flathub com.slack.Slack
 fi
+
+gsettings set org.gnome.desktop.app-folders folder-children "[]"
+
 
 
 sudo apt autoremove -yq
