@@ -10,7 +10,7 @@ Ubuntu is home to many humans throughout the world, it is their distribution of 
 {name} is opinionated, there are choices that are made for the end user, these choices have been made to ensure that the best user experience is being met at all times. The aim is not to be like Windows or MacOS, but to rather be the most effective, efficient and powerful DX layered on top of GNOME.
 
 
-{name} does allow the end user to add/remove functionality based on the args provided to the script, see [README.md](https://github.com/howzitcal/jika/blob/main/README.md).
+{name} aims to be a one-stop-script for end users to use when setting up a new Ubuntu distribution, {} does allow the end user to add/remove functionality based on the args provided to the script, see [README.md](https://github.com/howzitcal/jika/blob/main/README.md).
 
 
 Happy computing.
