@@ -1,7 +1,7 @@
-# jika
-Script for ubuntu to slim it down, add flatpak, and customize the DE, as well as add dev tools.
+# {name}
+Opinionated customization layer for Ubuntu. See [ABOUT.md](https://github.com/howzitcal/jika/blob/main/ABOUT.md) for more.
 
-## Args
+### Ubuntu 24.04 LTS Argument List:
  - `--vscode`: **(Optional)** Install VSCode and add microsoft repo for updates
  - `--dbeaver`: **(Optional)** Download and install DBeaver 
  - `--docker`: **(Optional)** Install DockerCE and add repo for updates
@@ -13,7 +13,7 @@ Script for ubuntu to slim it down, add flatpak, and customize the DE, as well as
  - `--slack`: **(Optional)** Install a necessary evil from flathub as flatpak
  - `--kooha`: **(Optional)** Install Screen Recorder with mic support and set the shortcut as `Shift + Super + R`
 
-## Ubuntu 24.04 LTS Example with all args:
+#### Example with all args:
 ```bash
 time wget -qO - https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/24.04.sh | bash -s -- \
  --vscode \
