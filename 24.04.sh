@@ -225,5 +225,7 @@ fi
 sudo apt autoremove -yq
 rm -rf $DOWNLOAD_PATH
 
-clear
+if [[ ! -v no_clear ]]; then
+    clear
+fi
 echo "Complete, please reboot your PC to finalize changes."

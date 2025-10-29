@@ -1,5 +1,8 @@
 # {name}
+
+
 Opinionated customization layer for Ubuntu. See [ABOUT.md](https://github.com/howzitcal/jika/blob/main/ABOUT.md) for more.
+
 
 ### Ubuntu 24.04 LTS Argument List:
  - `--vscode`: **(Optional)** Install VSCode and add microsoft repo for updates
@@ -12,6 +15,8 @@ Opinionated customization layer for Ubuntu. See [ABOUT.md](https://github.com/ho
  - `--git_email "john@doe.tech"`: **(Optional)** Set git email
  - `--slack`: **(Optional)** Install a necessary evil from flathub as flatpak
  - `--kooha`: **(Optional)** Install Screen Recorder with mic support and set the shortcut as `Shift + Super + R`
+ - `--no_clear`: Does not clear the script output after the script is finished.
+
 
 #### Example with all args:
 ```bash
@@ -23,7 +28,8 @@ time wget -qO - https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main
  --brave \
  --ssh_keygen \
  --git_username "John Doe" \
- --git_email "john@doe.texh" \
+ --git_email "john@doe.tech" \
  --slack \
- --kooha
+ --kooha \
+ --no_clear
 ```
