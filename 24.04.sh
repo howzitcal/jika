@@ -208,8 +208,8 @@ if [[ -v git_email ]]; then
 fi
 
 # flatpaks are lower becuase they are slow to download(sometimes)
-sudo flatpak install  --noninteractive -y org.gtk.Gtk3theme.Adwaita-dark
-sudo flatpak override --env=GTK_THEME=Adwaita-dark
+sudo flatpak install  --noninteractive -y org.gtk.Gtk3theme.Yaru-Blue-dark
+sudo flatpak override --env=GTK_THEME=Yaru-Blue-dark
 
 if [[ -v slack ]]; then
     flatpak install --noninteractive -y flathub com.slack.Slack
