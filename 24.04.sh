@@ -202,8 +202,7 @@ if [[ -v slack ]]; then
     flatpak install --noninteractive -y flathub com.slack.Slack
 fi
 
-gsettings set org.gnome.desktop.app-folders folder-children "['']"
-dconf reset -f /org/gnome/desktop/app-folders/
+gsettings set org.gnome.desktop.app-folders folder-children "['YaST']"
 
 
 
