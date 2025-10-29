@@ -134,11 +134,11 @@ wget https://github.com/imarkoff/Marble-shell-theme/releases/latest/download/Mar
 unzip $HOME/.themes/marble.zip -d $HOME/.themes/
 rm -rf $HOME/.themes/marble.zip
 
-gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 dconf write /org/gnome/shell/extensions/user-theme/name "'Marble-blue-dark'"
 dconf write /org/gnome/desktop/interface/cursor-theme "'breeze_cursors'"
+dconf write /org/gnome/desktop/interface/gtk-theme "'Yaru-blue-dark'"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 
 mkdir -p $HOME/Pictures/Wallpapers
 wget https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/assets/wallpapers/simple-waves.png -O $HOME/Pictures/Wallpapers/simple-waves.png
