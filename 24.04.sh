@@ -176,7 +176,7 @@ echo "[INFO] Setting up theme..."
 
 mkdir $HOME/.themes
 wget https://github.com/imarkoff/Marble-shell-theme/releases/latest/download/Marble-shell-filled.zip -O $HOME/.themes/marble.zip
-unzip $HOME/.themes/marble.zip
+unzip $HOME/.themes/marble.zip -d $HOME/.themes/
 rm -rf $HOME/.themes/marble.zip
 
 gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
