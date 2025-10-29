@@ -13,7 +13,7 @@ Script for ubuntu to slim it down, add flatpak, and customize the DE, as well as
  - `--slack`: **(Optional)** Install a necessary evil from flathub as flatpak
  - `--kooha`: **(Optional)** Install Screen Recorder with mic support and set the shortcut as `Shift + Super + R`
 
-## Ubuntu 24.04 Example:
+## Ubuntu 24.04 LTS Example with all args:
 ```bash
 time wget -qO - https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/24.04.sh | bash -s -- \
  --vscode \
