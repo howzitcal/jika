@@ -95,7 +95,8 @@ dconf write /org/gnome/shell/extensions/just-perfection/clock-menu-position-offs
 dconf write /org/gnome/shell/extensions/just-perfection/startup-status 0
 
 # tophat
-dconf write /org/gnome/shell/extensions/tophat/show-disk false
+dconf write /org/gnome/shell/extensions/tophat/show-disk true
+dconf write /org/gnome/shell/extensions/tophat/show-fs false
 dconf write /org/gnome/shell/extensions/tophat/cpu-display "'both'"
 dconf write /org/gnome/shell/extensions/tophat/cpu-sort-cores false
 dconf write /org/gnome/shell/extensions/tophat/mem-display "'both'"
