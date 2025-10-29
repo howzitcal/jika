@@ -47,7 +47,6 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/multi-monitor true
 dconf write /org/gnome/shell/extensions/dash-to-dock/click-action "'focus-or-previews'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/scroll-action "'switch-workspace'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink true
-dconf write /org/gnome/shell/extensions/dash-to-dock/disable-overview-on-startup true
 dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 1.0
 dconf write /org/gnome/shell/extensions/dash-to-dock/transparency-mode "'FIXED'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
