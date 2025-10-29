@@ -65,7 +65,9 @@ dconf write /org/gnome/shell/extensions/mediacontrols/extension-position "'Cente
 
 # extension customization: caffine customizations
 dconf write /org/gnome/shell/extensions/caffeine/show-indicator "'always'"
-dconf write /org/gnome/shell/extensions/caffeine/enable-mpris true
+dconf write /org/gnome/shell/extensions/caffeine/enable-mpris false
+dconf write /org/gnome/shell/extensions/caffeine/show-notifications false
+
 
 # adjust ubuntu tiling
 dconf write /org/gnome/shell/extensions/tiling-assistant/enable-tiling-popup false
