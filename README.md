@@ -15,7 +15,7 @@ Script for ubuntu to slim it down, add flatpak, and customize the DE, as well as
 
 ## Ubuntu 24.04 Example:
 ```bash
-time curl -o- https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/24.04.sh | bash -s -- \
+time wget -qO - https://raw.githubusercontent.com/howzitcal/jika/refs/heads/main/24.04.sh | bash -s -- \
  --vscode \
  --dbeaver \
  --docker \

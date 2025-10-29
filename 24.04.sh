@@ -112,7 +112,7 @@ gsettings set org.gnome.desktop.app-folders folder-children "['YaST']"
 sudo snap remove --no-wait snap-store firefox
 
 # apt installs
-sudo apt-get install -yq gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager vlc tilix unzip breeze-cursor-theme ca-certificates wget gpg gnupg2 apt-transport-https gnome-screenshot
+sudo apt-get install -yq gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager vlc tilix unzip breeze-cursor-theme ca-certificates gpg gnupg2 apt-transport-https gnome-screenshot gcc make curl
 
 # apt removes
 sudo apt-get -yq remove gnome-terminal
