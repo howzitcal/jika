@@ -112,7 +112,7 @@ gsettings set org.gnome.desktop.app-folders folder-children "['YaST']"
 sudo snap remove --no-wait snap-store firefox
 
 # apt installs
-sudo apt-get install -yq papirus-icon-theme gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager vlc tilix unzip breeze-cursor-theme ca-certificates wget gpg gnupg2 apt-transport-https gnome-screenshot
+sudo apt-get install -yq gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-shell-extension-manager vlc tilix unzip breeze-cursor-theme ca-certificates wget gpg gnupg2 apt-transport-https gnome-screenshot
 
 # apt removes
 sudo apt-get -yq remove gnome-terminal
@@ -121,6 +121,8 @@ sudo apt-get -yq remove gnome-terminal
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # theme start
+wget -qO- https://git.io/papirus-icon-theme-install | sh
+
 dconf write /com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d/background-transparency-percent 4
 dconf write /com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d/login-shell true
 
