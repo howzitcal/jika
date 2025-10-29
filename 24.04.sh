@@ -96,6 +96,8 @@ dconf write /org/gnome/shell/extensions/just-perfection/notification-banner-posi
 dconf write /org/gnome/shell/extensions/just-perfection/clock-menu-position 1
 dconf write /org/gnome/shell/extensions/just-perfection/clock-menu-position-offset 20
 dconf write /org/gnome/shell/extensions/just-perfection/startup-status 0
+dconf write /org/gnome/shell/extensions/just-perfection/world-clock false
+
 
 # tophat
 dconf write /org/gnome/shell/extensions/tophat/show-disk true
