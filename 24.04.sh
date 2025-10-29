@@ -124,7 +124,7 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 
 # theme start
 wget -qO- https://git.io/papirus-icon-theme-install | sh
-sudo snap install papirus-icon-theme
+sudo snap install icon-theme-papirus
 
 dconf write /com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d/background-transparency-percent 4
 dconf write /com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d/login-shell true
