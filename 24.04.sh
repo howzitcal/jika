@@ -50,7 +50,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink true
 dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 1.0
 dconf write /org/gnome/shell/extensions/dash-to-dock/transparency-mode "'FIXED'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
-dconf write /org/gnome/shell/extensions/dash-to-dock/background-color "'rgb(31,31,31)'"
+dconf write /org/gnome/shell/extensions/dash-to-dock/background-color "'rgb(33,38,42)'"
 
 
 # extension customization: app indicator customizations
